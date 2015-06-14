@@ -22,7 +22,7 @@ DB.prototype.connect = function() {
 DB.prototype.run = function(query) {
   return Promise.using(this.connect(), function(client) {
     return new Promise(function(resolve, reject) {
-      console.log(query);
+      console.log("Running Postgres Query: ", query);
       client.query(query, function(err, result) {
         if(err) { console.log(err); reject('error running query', err); }
         resolve(result);
